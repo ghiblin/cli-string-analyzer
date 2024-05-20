@@ -73,4 +73,8 @@ export class Result<T, E extends Error> {
 
     throw new Error(msg);
   }
+
+  getErr(): this extends Result<never, E> ? E : E | null {
+    return this.#err as E;
+  }
 }

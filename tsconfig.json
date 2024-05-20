@@ -3,8 +3,8 @@
     "rootDir": "src",
     "outDir": "dist",
     "strict": true,
-    "target": "es6",
-    "module": "CommonJS",
+    "target": "esnext",
+    "module": "esnext",
     "sourceMap": true,
     "esModuleInterop": true,
     "moduleResolution": "Node"

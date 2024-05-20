@@ -1,3 +1,4 @@
+import { resolve } from "path/posix";
 import { PathStringProvider } from "./path-string.provider";
 
 describe("PathStringProvider", () => {
@@ -14,7 +15,7 @@ describe("PathStringProvider", () => {
   });
 
   it("should retrieve the content of the file", async () => {
-    const result = PathStringProvider.parse("text.txt");
+    const result = PathStringProvider.parse(resolve(__dirname, "text.txt"));
     expect(result.isOk()).toBe(true);
     const provider = result.unwrap();
     const content = await provider.provide();
@@ -23,7 +24,9 @@ describe("PathStringProvider", () => {
   });
 
   it("should return an error for a missing file", async () => {
-    const result = PathStringProvider.parse("missing-file.txt");
+    const result = PathStringProvider.parse(
+      resolve(__dirname, "missing-file.txt")
+    );
     expect(result.isOk()).toBe(true);
     const provider = result.unwrap();
     const content = await provider.provide();
